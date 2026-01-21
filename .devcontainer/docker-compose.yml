@@ -15,16 +15,16 @@ x-common:
   tty: true
   network_mode: host
   pid: "host" # 添加 pid 命名空间共享
-  ipc: "host" # 添加 ipc 命名空间共享    
+  ipc: "host" # 添加 ipc 命名空间共享
   privileged: true
   user: "yutou"
   stdin_open: true
 services:
-  driverLogic-service:
+  nav2-service:
     # build:
     #   context: ..
     #   dockerfile: .devcontainer/Dockerfile
-    image: nav_container:latest
+    image: yutouxiaozhuan/nav2-humble:latest
     container_name: nav_container
     <<: *common
     volumes:
