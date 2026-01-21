@@ -43,6 +43,7 @@ RUN apt-get update && \
         ros-humble-rmw-cyclonedds-cpp \
         # === Shell ===
         fish && \
+    pip install pre-commit && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
