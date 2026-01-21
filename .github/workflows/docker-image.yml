@@ -4,7 +4,7 @@ on:
   push:
     branches:
       # 监听推送到 master 分支
-      - "master"
+      - "main"
     # 监听以 v 开头的标签
     tags:
       - 'v*'
