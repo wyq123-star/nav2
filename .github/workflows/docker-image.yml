@@ -23,7 +23,7 @@ jobs:
       REGISTRY: 'docker.io'
       # 使用 GitHub 仓库名作为镜像名称，格式为 < 账户>/< 仓库>
       # IMAGE_NAME: ${{ github.generator }}
-      IMAGE_NAME: mobaijun/generator
+      IMAGE_NAME: yutouxiaozhuan/nav2_humble
 
     steps:
       # 检出代码
