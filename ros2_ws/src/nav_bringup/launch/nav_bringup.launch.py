@@ -82,9 +82,8 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     declare_graph_file_cmd = DeclareLaunchArgument(
-        'graph',
-        default_value=os.path.join(bringup_dir, 'graphs', 'turtlebot3_graph.geojson'),
-    )
+        'graph', default_value=os.path.join(
+            bringup_dir, 'graphs', 'turtlebot3_graph.geojson'), )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time',
@@ -94,7 +93,10 @@ def generate_launch_description() -> LaunchDescription:
 
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(bringup_dir, 'params', 'nav2_params.yaml'),
+        default_value=os.path.join(
+            bringup_dir,
+            'params',
+            'nav2_params.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes',
     )
 
@@ -124,7 +126,10 @@ def generate_launch_description() -> LaunchDescription:
 
     declare_rviz_config_file_cmd = DeclareLaunchArgument(
         'rviz_config_file',
-        default_value=os.path.join(bringup_dir, 'rviz', 'nav2_default_view.rviz'),
+        default_value=os.path.join(
+            bringup_dir,
+            'rviz',
+            'nav2_default_view.rviz'),
         description='Full path to the RVIZ config file to use',
     )
 
@@ -145,8 +150,9 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     declare_simulator_cmd = DeclareLaunchArgument(
-        'headless', default_value='True', description='Whether to execute gzclient)'
-    )
+        'headless',
+        default_value='True',
+        description='Whether to execute gzclient)')
 
     declare_world_cmd = DeclareLaunchArgument(
         'world',
@@ -155,8 +161,9 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     declare_robot_name_cmd = DeclareLaunchArgument(
-        'robot_name', default_value='turtlebot3_waffle', description='name of the robot'
-    )
+        'robot_name',
+        default_value='turtlebot3_waffle',
+        description='name of the robot')
 
     declare_robot_sdf_cmd = DeclareLaunchArgument(
         'robot_sdf',
@@ -182,7 +189,10 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     rviz_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'rviz_launch.py')),
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                launch_dir,
+                'rviz_launch.py')),
         condition=IfCondition(use_rviz),
         launch_arguments={
             'namespace': namespace,
@@ -192,7 +202,10 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     bringup_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'bringup_launch.py')),
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                launch_dir,
+                'bringup_launch.py')),
         launch_arguments={
             'namespace': namespace,
             'slam': slam,

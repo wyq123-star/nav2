@@ -52,4 +52,4 @@ repos:
     hooks:
       - id: autopep8
         # 下面这行让它修得更激进一点，符合 ROS 规范
-        args: ["--in-place", "--aggressive", "--aggressive"]
+        args: ["--in-place"]

@@ -5,12 +5,12 @@ from launch_ros.actions import Node
 Node(
     package='tf2_ros',
     executable='static_transform_publisher',
-    arguments = ['0', '0', '0', '0', '0', '0', 'map', 'odom']
+    arguments=['0', '0', '0', '0', '0', '0', 'map', 'odom']
 ),
 
 # 2. 静态发布 odom -> base_link (通常不用静态，除非是测试)
 Node(
     package='tf2_ros',
     executable='static_transform_publisher',
-    arguments = ['0', '0', '0', '0', '0', '0', 'odom', 'base_link']
+    arguments=['0', '0', '0', '0', '0', '0', 'odom', 'base_link']
 ),
