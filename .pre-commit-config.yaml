@@ -46,3 +46,10 @@ repos:
         args: ["--verbose"]
       - id: check-dependabot
         args: ["--verbose"]
+
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v2.0.4
+    hooks:
+      - id: autopep8
+        # 下面这行让它修得更激进一点，符合 ROS 规范
+        args: ["--in-place", "--aggressive", "--aggressive"]
