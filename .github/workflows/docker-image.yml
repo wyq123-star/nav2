@@ -3,10 +3,14 @@ name: docker-build-push
 on:
   push:
     branches:
-      - "main"  # 再次确认你的主分支是 main 还是 master
+      - "main"
+    # 核心修改：添加 paths 过滤
+    paths:
+      - 'Dockerfile'      # 只有当根目录下的 Dockerfile 变动时才触发
+      # - 'docker/**'     # 如果你的构建脚本在特定目录下，也可以加上目录
     tags:
       - 'v*'
-  workflow_dispatch: # 保留手动触发按钮
+  workflow_dispatch:      # 手动触发依然保留
 
 jobs:
   build:
