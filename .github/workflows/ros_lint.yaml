@@ -1,0 +1,53 @@
+name: ROS 2 Lint & Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ament_lint:
+    name: Ament Linters (ROS Style)
+    runs-on: ubuntu-latest
+    container:
+      image: ros:humble-ros-base  # 确保这里是你用的 ROS 版本
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Ament Linters
+        run: |
+          . /opt/ros/humble/setup.sh
+          # 这里把你在本地删掉的那些检查补回来
+          echo "Checking CMake..."
+          ament_lint_cmake .
+
+          echo "Checking C++ Style..."
+          ament_cpplint .
+
+          echo "Checking Python Style..."
+          ament_flake8 .
+
+          echo "Checking Copyright/Docs..."
+          ament_pep257 .
+          ament_copyright .
+
+  build_test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    container:
+      image: ros:humble-ros-base
+    needs: ament_lint # 只有格式检查通过了再编译，省资源
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          . /opt/ros/humble/setup.sh
+          colcon build --symlink-install
+
+      - name: Test
+        run: |
+          . /opt/ros/humble/setup.sh
+          colcon test
+          colcon test-result --verbose
