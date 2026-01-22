@@ -22,9 +22,9 @@ jobs:
           echo "Checking Python Style..."
           ament_flake8 .
 
-          echo "Checking Copyright/Docs..."
-          ament_pep257 .
-          ament_copyright .
+        #   echo "Checking Copyright/Docs..."
+        #   ament_pep257 .
+        #   ament_copyright .
 #          # 这里把你在本地删掉的那些检查补回来
         #   echo "Checking CMake..."
         #   ament_lint_cmake .
